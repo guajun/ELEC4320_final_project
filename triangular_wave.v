@@ -24,7 +24,7 @@ begin
 
             if(data == amplitude)inc <= 0;
 
-            else if(data == 0)inc <= 0;
+            else if(data == 0)inc <= 1;
 
             else data <= inc? data + 1: data - 1;
         end
