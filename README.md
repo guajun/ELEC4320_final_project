@@ -72,3 +72,24 @@ BRAM 1
 + Width: 16
 
 Store tangent wave in $[0, \frac{\pi}{2}]$
+
+
+Matlab code to generate table to two file in vivado mem init coe format:
+
+```
+i = 0:2^16-1;
+i = i / 2^16 * pi / 2;
+
+out1 = sin(i) * 2^16;
+out1 = floor(out1);
+
+out2 = tan(i)/tan(i(end)) * 2^16;
+out2 = floor(out2);
+
+fid1 = fopen('out1.txt', 'w');
+fid2 = fopen('out2.txt', 'w');
+
+fprintf(fid1,'%d ',out1);
+fprintf(fid2,'%d ',out2);
+
+```
