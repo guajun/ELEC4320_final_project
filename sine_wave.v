@@ -7,14 +7,14 @@ module sine_wave(input reg clk,
                  input reg [15:0] prescaler, // act as upperbound
                  output reg [15:0] data);
     
-    reg [15:0] counter   = 0;
-    reg [15:0] index     = 0;
+    reg [15:0] counter = 0;
+    reg [15:0] index   = 0;
     
     always @(posedge clk)
     begin
         if (ena)
         begin
-            if (counter == prescaler) counter  <= amplitude;
+            if (counter == prescaler) counter  < = amplitude;
             else counter <= counter + 1;
         end
         else counter <= amplitude;
