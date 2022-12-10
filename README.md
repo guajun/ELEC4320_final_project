@@ -34,25 +34,23 @@
     Reset value: 000
 
 
-### [15:0] amplitude 
+### [15:0] amplitude
 
 + Bit 15:0
 
-    Amplitude of output
+    Amplitude of output when in **triangular wave**, and **saw tooth wave** mode
 
-    Affecting  **triangular wave**, and **saw tooth wave**
-
-*No effect when trigonometric function wave is enabled*
+    Lowerbound of domain when in **trigonometric function wave** mode
 
 ### [15:0] prescaler 
 
 + Bit 15:0
 
-    Prescaler of input clock
+    Prescaler of input clock when in **square wave**, **triangular wave**, **saw tooth wave**, and **Users' wave(Enable DMA)**
 
-    Affecting **square wave**, **triangular wave**, **saw tooth wave**, and **Users' wave(Enable DMA)**
+    Upperbound of domain when in **trigonometric function wave** mode
 
-*No effect when trigonometric function wave is enabled*
+    The upperbound smaller than the lowerbound is supported because of the periodicity.
 
 
 ## Look-Up Table
