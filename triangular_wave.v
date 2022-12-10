@@ -29,7 +29,6 @@ module triangular_wave(input reg clk,
         end
         else
         begin
-            data    <= 0;
             counter <= 0;
         end
     end
