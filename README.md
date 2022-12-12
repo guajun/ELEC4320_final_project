@@ -53,7 +53,7 @@
     The upperbound smaller than the lowerbound is supported because of the periodicity.
 
 
-## Look-Up Table
+<!-- ## Look-Up Table
 
 BRAM 1
 
@@ -72,4 +72,12 @@ BRAM 1
 Store tangent wave in $[0, \frac{\pi}{2}]$
 
 
-`./table_gen` is the directory of the **matlab code** to generate the table
+`./table_gen` is the directory of the **matlab code** to generate the table -->
+
+## Cordic
+
+The **AXI-Stream** IP core for calculating sin and cos
+
+Replace BRAM to save the resource
+
+***Showoff understanding of AXI protocal***
