@@ -4,8 +4,8 @@
 module square_wave(input clk,
                    input ena,
                    input [15:0] prescaler,
-                   output reg [15:0]data);
-    
+                   output reg data);
+    reg data = 0;
     reg [15:0] counter = 0;
     
     always @(posedge clk)
@@ -19,7 +19,10 @@ module square_wave(input clk,
             end
             else counter <= counter + 1;
         end
-        else counter <= 0;
+        else begin
+            data <= 0;
+            counter <= 0;
+        end
         
     end
     

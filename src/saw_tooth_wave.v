@@ -5,7 +5,7 @@ module saw_tooth_wave(input clk,
                       input [15:0] amplitude,
                       input [15:0] prescaler,
                       output reg [15:0]data);
-
+    reg [15:0] data = 0;
     reg [15:0] counter = 0;
     
     always @(posedge clk)
@@ -23,8 +23,8 @@ module saw_tooth_wave(input clk,
             end
             else counter <= counter + 1;
         end
-        else
-        begin
+        else begin
+            data <= 0;
             counter <= 0;
         end
     end
