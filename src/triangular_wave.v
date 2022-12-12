@@ -6,11 +6,6 @@ module triangular_wave(input clk,
                        input [15:0] amplitude,
                        input [15:0] prescaler,
                        output reg [15:0]data);
-    // reg clk;
-    // reg ena;
-    // reg amplitude;
-    // reg [15:0] prescaler;
-    // reg [15:0]data;
 
     reg [15:0] counter = 0;
     reg inc            = 0;
