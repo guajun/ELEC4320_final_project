@@ -11,8 +11,11 @@ module trigonometric_wave(input clk,
         data = 0;
     end
     
-    wire [47:0] sin_cos_data = 0;
-    wire [31:0] tan_data     = 0;
+//    wire [47:0] sin_cos_data = 0;
+//    wire [31:0] tan_data     = 0;
+    
+    wire [47:0] sin_cos_data ;
+    wire [31:0] tan_data;
     reg [17:0] phase         = 0;
     reg [15:0] counter       = 0;
     
@@ -62,9 +65,9 @@ module trigonometric_wave(input clk,
     .M_AXIS_RESULT_tdata(tan_data),
     .M_AXIS_RESULT_tvalid(),
     .clk(clk),
-    .s_axis_a_tdata(sin_cos_data[16:0]),
+    .s_axis_a_tdata(sin_cos_data[23:0]),
     .s_axis_a_tvalid(1),
-    .s_axis_b_tdata(sin_cos_data[40:24]),
+    .s_axis_b_tdata(sin_cos_data[47:24]),
     .s_axis_b_tvalid(1)
     );
     
