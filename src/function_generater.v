@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 
-module function_generater(output reg [15:0] data,
+module function_generater(output reg [31:0] data,
                           input [7:0] control,
                           input [15:0] prescaler,
                           input [15:0] amplitude,
@@ -10,6 +10,7 @@ module function_generater(output reg [15:0] data,
 reg [7:0] mode;
 
 wire square_wave_data;
+wire [31:0] trigonometric_wave_data;
 wire [15:0] triangular_wave_data;
 wire [15:0] saw_tooth_wave_data;
 
@@ -36,9 +37,9 @@ end
 always @(posedge clk)
 
 case(mode)
-    8'b0000_0001:;
-    8'b0000_0010:;
-    8'b0000_0100:;
+    8'b0000_0001:data <= trigonometric_wave_data;
+    8'b0000_0010:data <= trigonometric_wave_data;
+    8'b0000_0100:data <= trigonometric_wave_data;
     8'b0000_1000:data <= square_wave_data?16'hFFFF:16'h0000;
     8'b0001_0000:data <= triangular_wave_data;
     8'b0010_0000:data <= saw_tooth_wave_data;
@@ -54,13 +55,13 @@ begin
 
 end
 
-//    trigonometric_wave trigonometric_wave(
-//    .clk(clk),
-//    .ena(mode[2:0]),
-//    .amplitude(amplitude),
-//    .prescaler(prescaler),
-//    .data(data)
-//    );
+trigonometric_wave trigonometric_wave(
+.clk(clk),
+.ena(mode[2:0]),
+.amplitude(amplitude),
+.prescaler(prescaler),
+.data(trigonometric_wave_data)
+);
 
 square_wave square_wave(
 .clk(clk),
