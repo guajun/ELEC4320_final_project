@@ -2,7 +2,7 @@
 
 module test();
     
-    wire [15:0] data_out;
+    wire [31:0] data_out;
     reg [7:0] control    = 8'h00;
     reg [15:0] prescaler = 16'h0000;
     reg [15:0] amplitude = 16'h0000;
@@ -55,9 +55,37 @@ module test();
         
         #5000 control[0] <= 1'b0;
         prescaler        <= 16'h01;
-        #2 control[0]    <= 1'b1;
+        control[0]    <= 1'b1;
         
-        #5000 $finish;
+        #5000 control[0] <= 1'b0;
+        #1 control[3:1] <= 3'b000; // cosine
+        amplitude        <= 16'h0000;
+        prescaler        <= 16'hFFFF;
+        control[0] <= 1'b1;
+
+        #180000 control[0] <= 1'b0;
+        #1 control[3:1] <= 3'b001; // sine
+        amplitude        <= 16'h0000;
+        prescaler        <= 16'hFFFF;
+        control[0] <= 1'b1;
+        
+        #180000 control[0] <= 1'b0;
+        #1 amplitude        <= 16'h0000; // sine
+        prescaler        <= 16'h8000;
+        control[0] <= 1'b1;
+
+        #180000 control[0] <= 1'b0;
+        #1 amplitude        <= 16'h8000; // sine
+        prescaler        <= 16'hFFFF;
+        control[0] <= 1'b1;
+
+        #180000 control[0] <= 1'b0;
+        #1 control[3:1] <= 3'b010; // cosine
+        amplitude        <= 16'h0000;
+        prescaler        <= 16'hFFFF;
+        control[0] <= 1'b1;
+
+        #180000 $finish;
         
         
     end
